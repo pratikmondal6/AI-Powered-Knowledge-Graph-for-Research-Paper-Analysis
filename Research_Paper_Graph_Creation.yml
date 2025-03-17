@@ -1,0 +1,1046 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Research_Paper_Graph_Creation
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/huggingface_hub:0.0.3@b0ef53c1efa8333b941237787a3d7116fcedda0aeb415d6774b2bc42e467b9c3
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1739728735404-source-1740256756488-target
+      selected: false
+      source: '1739728735404'
+      sourceHandle: source
+      target: '1740256756488'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: http-request
+      id: 1739993795163-source-1741648061712-target
+      selected: false
+      source: '1739993795163'
+      sourceHandle: source
+      target: '1741648061712'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1740256756488-source-1739993795163-target
+      selected: false
+      source: '1740256756488'
+      sourceHandle: source
+      target: '1739993795163'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1741696099704-source-1741696632324-target
+      selected: false
+      source: '1741696099704'
+      sourceHandle: source
+      target: '1741696632324'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1741648061712-source-1741696099704-target
+      selected: false
+      source: '1741648061712'
+      sourceHandle: source
+      target: '1741696099704'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1741696632324'
+        sourceType: iteration-start
+        targetType: http-request
+      id: 1741696632324start-source-1741696718753-target
+      selected: false
+      source: 1741696632324start
+      sourceHandle: source
+      target: '1741696718753'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1740256756488-source-1739729621994-target
+      selected: false
+      source: '1740256756488'
+      sourceHandle: source
+      target: '1739729621994'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1739729621994-source-1741697763029-target
+      selected: false
+      source: '1739729621994'
+      sourceHandle: source
+      target: '1741697763029'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: code
+      id: 1741696632324-source-1741793130593-target
+      selected: false
+      source: '1741696632324'
+      sourceHandle: source
+      target: '1741793130593'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1741793130593-source-1741899208552-target
+      selected: false
+      source: '1741793130593'
+      sourceHandle: source
+      target: '1741899208552'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1741899208552-source-1741697763029-target
+      selected: false
+      source: '1741899208552'
+      sourceHandle: source
+      target: '1741697763029'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: paper
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: paper
+      height: 89
+      id: '1739728735404'
+      position:
+        x: 30
+        y: 270.5
+      positionAbsolute:
+        x: 30
+        y: 270.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1740256756488'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            max_new_tokens: 512
+            temperature: 0.8
+            top_k: 10
+            top_p: 0.9
+          mode: completion
+          name: mistralai/Mistral-7B-Instruct-v0.3
+          provider: langgenius/huggingface_hub/huggingface_hub
+        prompt_template:
+          edition_type: basic
+          text: "You are an intelligent assistant tasked with extracting important\
+            \ information from research papers. Please analyze the following paper\
+            \ text and extract the required information.\n\n**Required Outputs:**\n\
+            **Summary**: Provide a concise summary of the paper \nOnce you have extracted\
+            \ this information, return it in the following format:\n\"summary\": \"\
+            {{#context#}}\"\n\n"
+        selected: false
+        title: GET SUMMERY FROM PAPER
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1739729621994'
+      position:
+        x: 2809
+        y: 270.5
+      positionAbsolute:
+        x: 2809
+        y: 270.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1740256756488'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            max_new_tokens: 4096
+            temperature: 1
+            top_k: 10
+            top_p: 0.9
+          mode: completion
+          name: mistralai/Mistral-7B-Instruct-v0.3
+          provider: langgenius/huggingface_hub/huggingface_hub
+        prompt_template:
+          edition_type: basic
+          text: "Given the following text from a research paper, extract the title\
+            \ of the paper. The title is typically located at the beginning of the\
+            \ document and may be followed by the authors' names and abstract. Return\
+            \ only the title, do not add any extra text with the title. \n{{#1740256756488.text#}}\
+            \ Title\n"
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: 5000
+        selected: false
+        title: Get Paper Title
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 114
+      id: '1739993795163'
+      position:
+        x: 636
+        y: 410
+      positionAbsolute:
+        x: 636
+        y: 410
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1739728735404'
+        - paper
+      height: 91
+      id: '1740256756488'
+      position:
+        x: 333
+        y: 270.5
+      positionAbsolute:
+        x: 333
+        y: 270.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        desc: ''
+        headers: ''
+        method: get
+        params: 'query:{{#1739993795163.text#}}
+
+          fields:title,authors,abstract,venue,year,references.title
+
+          limit:1'
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: 5000
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Get Metadata by semanticscholar API
+        type: http-request
+        url: https://api.semanticscholar.org/graph/v1/paper/search
+        variables: []
+      height: 134
+      id: '1741648061712'
+      position:
+        x: 939
+        y: 410
+      positionAbsolute:
+        x: 939
+        y: 410
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\n\ndef main(response_json: str) -> dict:\n    try:\n  \
+          \      # Parse the outer JSON\n        inner_data = json.loads(response_json)\n\
+          \        \n        #Extract title of given paper\n        Title = inner_data[\"\
+          data\"][0].get(\"title\")\n\n        # Extract references\n        references\
+          \ = inner_data[\"data\"][0].get(\"references\", [])\n\n        # Extract\
+          \ paperIds (ignoring null values)\n        #paper_ids = [ref[\"paperId\"\
+          ] for ref in references if ref.get(\"paperId\")]\n        # Extract only\
+          \ titles (ignoring null values)\n        paper_titles = [\n            {\"\
+          title\": ref[\"title\"]}\n            for ref in references\n          \
+          \  if ref.get(\"title\")\n        ]\n        paper_titles.append({\"title\"\
+          : Title})\n\n        return {\n            \"result\": paper_titles  # Returning\
+          \ an array of objects with titles only\n        }\n\n        return {\n\
+          \            \"result\": str(paper_titles)\n        }\n    except (json.JSONDecodeError,\
+          \ KeyError, IndexError) as e:\n        return {\n            \"error\":\
+          \ f\"Failed to process JSON: {str(e)}\"\n        }\n\n# Example usage:\n\
+          # response_json = '...'  # Replace with actual JSON string\n# print(main(response_json))\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[object]
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: 5000
+        selected: false
+        title: GET ALL TITLE OF REFERENCES PAPERs
+        type: code
+        variables:
+        - value_selector:
+          - '1741648061712'
+          - body
+          variable: response_json
+      height: 78
+      id: '1741696099704'
+      position:
+        x: 1242
+        y: 410
+      positionAbsolute:
+        x: 1242
+        y: 410
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 219
+        is_parallel: false
+        iterator_selector:
+        - '1741696099704'
+        - result
+        output_selector:
+        - '1741696718753'
+        - body
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1741696632324start
+        title: 'LOOP FOR EACH TITLE '
+        type: iteration
+        width: 901
+      height: 219
+      id: '1741696632324'
+      position:
+        x: 1545
+        y: 410
+      positionAbsolute:
+        x: 1545
+        y: 410
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 901
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1741696632324start
+      parentId: '1741696632324'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 1569
+        y: 478
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        desc: ''
+        headers: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1741696632324'
+        method: get
+        params: 'query:{{#1741696632324.item#}}
+
+          fields:title,authors,abstract,venue,year,externalIds,fieldsOfStudy
+
+          limit:1'
+        retry_config:
+          max_retries: 10
+          retry_enabled: true
+          retry_interval: 5000
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: GET META DATA BY API FOR EACH TITLE
+        type: http-request
+        url: https://api.semanticscholar.org/graph/v1/paper/search
+        variables: []
+      height: 134
+      id: '1741696718753'
+      parentId: '1741696632324'
+      position:
+        x: 343.34024604461365
+        y: 65
+      positionAbsolute:
+        x: 1888.3402460446137
+        y: 475
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+      zIndex: 1002
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1739729621994'
+          - text
+          variable: Summary
+        - value_selector:
+          - '1741696099704'
+          - result
+          variable: result
+        - value_selector:
+          - '1741899208552'
+          - text
+          variable: DescriptionofGraph
+        selected: false
+        title: End
+        type: end
+      height: 141
+      id: '1741697763029'
+      position:
+        x: 3112
+        y: 270.5
+      positionAbsolute:
+        x: 3112
+        y: 270.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import json\nimport requests\n\ndef main(output_json_data: list) ->\
+          \ dict:\n    \"\"\"\n    Processes a list of JSON strings, extracts research\
+          \ paper details, \n    and returns a dictionary with structured paper data.\n\
+          \    \"\"\"\n    neo4j_payloads = []\n\n    for output_item in output_json_data:\n\
+          \        try:\n            parsed_data = json.loads(output_item)  # Ensure\
+          \ it's valid JSON\n        except json.JSONDecodeError:\n            print(\"\
+          Skipping invalid JSON entry:\", output_item)\n            continue\n\n \
+          \       papers = parsed_data.get(\"data\", [])\n\n        for paper in papers:\n\
+          \            paper_id = paper.get(\"paperId\", \"\")\n            title\
+          \ = paper.get(\"title\", \"\")\n            abstract = paper.get(\"abstract\"\
+          , \"\")\n            fieldsOfStudy = paper.get(\"fieldsOfStudy\", \"\")\n\
+          \            venue = paper.get(\"venue\", \"\")\n            year = paper.get(\"\
+          year\", \"\")\n            authors = [author.get(\"name\", \"Unknown\")\
+          \ for author in paper.get(\"authors\", [])]\n            doi = paper.get(\"\
+          externalIds\", {}).get(\"DOI\", \"\")\n            # Prepare for the Citation\
+          \ node (if applicable)\n            references = paper.get(\"references\"\
+          , [])\n            citations = [ref.get(\"citation\", \"\") for ref in references\
+          \ if ref.get(\"citation\")]\n\n\n            neo4j_payload = {\n       \
+          \         \"paperId\": paper_id,\n                \"title\": title,\n  \
+          \              \"abstract\": abstract,\n                \"year\": year,\n\
+          \                \"venue\": venue,\n                \"authors\": authors,\n\
+          \                \"citations\": citations,\n                \"doi\": doi,\n\
+          \                \"fieldsOfStudy\":fieldsOfStudy\n            }\n\n    \
+          \        neo4j_payloads.append(neo4j_payload)\n    \n    # Neo4j API endpoint\n\
+          \    url = \"https://ae781b71.databases.neo4j.io/db/neo4j/query/v2\"\n\n\
+          \    # Headers\n    headers = {\n        \"Content-Type\": \"application/json\"\
+          ,\n        \"Accept\": \"application/json\",\n        \"Authorization\"\
+          : \"Basic bmVvNGo6M0JlRS1qZVNveThWMlQyZklJWFh3N0w3V2xGa2dxUHpnaWlWTlhqaUpDWQ==\"\
+          \n    }\n\n    # Request body\n    # Request body with Cypher query for\
+          \ creating nodes and relationships\n    payload = {\n        \"statement\"\
+          : \"\"\"\n            UNWIND $papers AS paper\n            MERGE (p:Paper\
+          \ {paperId: paper.paperId})\n            SET p.title = paper.title,\n  \
+          \              p.abstract = paper.abstract,\n                p.year = paper.year,\n\
+          \                p.doi = paper.doi\n\n            // Create Author nodes\
+          \ and WROTE relationship\n            FOREACH (author IN paper.authors |\n\
+          \                MERGE (a:Author {name: author})\n                MERGE\
+          \ (a)-[:WROTE]->(p)\n            )\n\n            // Create Venue node and\
+          \ PUBLISHED_IN relationship\n            MERGE (v:Venue {name: paper.venue})\n\
+          \            MERGE (p)-[:PUBLISHED_IN]->(v)\n            MERGE (v)-[:PUBLISHED_BY]->(p)\n\
+          \n            // Create DOI node and HAS_DOI relationship\n            MERGE\
+          \ (doi:DOI {id: paper.doi})\n            MERGE (p)-[:HAS_DOI]->(doi)\n \
+          \           \n            // Create FieldsOfStudy nodes and RELATES_TO relationship\n\
+          \            FOREACH (field IN paper.fieldsOfStudy |\n                MERGE\
+          \ (f:FieldsOfStudy {name: field})\n                MERGE (p)-[:RELATES_TO]->(f)\n\
+          \            )\n            // Create CITES relationships if references\
+          \ are available\n            FOREACH (citation IN paper.references |\n \
+          \               MERGE (c:Paper {paperId: citation.paperId})\n          \
+          \      MERGE (p)-[:CITES]->(c)\n            )\n        \"\"\",\n       \
+          \ \"parameters\": {\"papers\": neo4j_payloads}\n    }\n    # Send the POST\
+          \ request\n    response = requests.post(url, headers=headers, json=payload)\n\
+          \n    # Print the response\n    if response.status_code == 200 or response.status_code\
+          \ == 201:\n         return {\"response\": str\n    (response.json())} \n\
+          \       \n    else:\n        return {\"response\": str\n    (response.text)}\
+          \ \n       \n    # Return a structured dictionary"
+        code_language: python3
+        desc: ''
+        outputs:
+          response:
+            children: null
+            type: string
+        selected: false
+        title: FORMAT Metadata TO Push In Neo4jAPI & BUILD RELATIOHSHIP
+        type: code
+        variables:
+        - value_selector:
+          - '1741696632324'
+          - output
+          variable: output_json_data
+      height: 53
+      id: '1741793130593'
+      position:
+        x: 2506
+        y: 410
+      positionAbsolute:
+        x: 2506
+        y: 410
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: completion
+          name: mistralai/Mistral-7B-Instruct-v0.3
+          provider: langgenius/huggingface_hub/huggingface_hub
+        prompt_template:
+          edition_type: basic
+          text: '
+
+            You are an expert in knowledge graph construction and academic data modeling.
+            Your task is to describe structured Cypher queries, how they can populate
+            a Neo4j graph database with research paper metadata.
+
+            { "statement": """ UNWIND $papers AS paper MERGE (p:Paper {paperId: paper.paperId})
+            SET p.title = paper.title, p.abstract = paper.abstract, p.year = paper.year,
+            p.doi = paper.doi // Create Author nodes and WROTE relationship FOREACH
+            (author IN paper.authors | MERGE (a:Author {name: author}) MERGE (a)-[:WROTE]->(p)
+            ) // Create Venue node and PUBLISHED_IN relationship MERGE (v:Venue {name:
+            paper.venue}) MERGE (p)-[:PUBLISHED_IN]->(v) MERGE (v)-[:PUBLISHED_BY]->(p)
+            // Create DOI node and HAS_DOI relationship MERGE (doi:DOI {id: paper.doi})
+            MERGE (p)-[:HAS_DOI]->(doi) // Create FieldsOfStudy nodes and RELATES_TO
+            relationship FOREACH (field IN paper.fieldsOfStudy | MERGE (f:FieldsOfStudy
+            {name: field}) MERGE (p)-[:RELATES_TO]->(f) ) // Create CITES relationships
+            if references are available FOREACH (citation IN paper.references | MERGE
+            (c:Paper {paperId: citation.paperId}) MERGE (p)-[:CITES]->(c) ) """ }
+            describe how many nodes and relations it will create in knowledge graph.'
+        selected: false
+        title: FORMAT OUTPUT
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1741899208552'
+      position:
+        x: 2809
+        y: 410
+      positionAbsolute:
+        x: 2809
+        y: 410
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 201
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Initiate the workflow by uploading a research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Receive a research paper file as input.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          A research paper file (PDF, DOC, etc.).","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          The system takes the uploaded file and prepares it for extraction.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          The file is successfully uploaded.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 253
+      height: 201
+      id: '1741971619307'
+      position:
+        x: 30
+        y: 381.5746027907525
+      positionAbsolute:
+        x: 30
+        y: 381.5746027907525
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 253
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 159
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Extract the text content from the uploaded research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Read and parse the document to retrieve text.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          The uploaded research paper file.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Uses a document extraction tool to convert the file into readable text.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          The extracted text of the research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5},{"children":[],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":6}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 159
+      id: '1741971646307'
+      position:
+        x: 333
+        y: 40.772572221355176
+      positionAbsolute:
+        x: 333
+        y: 40.772572221355176
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 178
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Extract the title of the research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Identify and extract the title from the document text.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Extracted text from the research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Uses an AI model (Mistral-7B) to identify and extract the title.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          The paper title is extracted.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 241
+      height: 178
+      id: '1741971676547'
+      position:
+        x: 636
+        y: 555.3831847399207
+      positionAbsolute:
+        x: 636
+        y: 555.3831847399207
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 241
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 156
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Generate a summary of the research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Process the extracted text and summarize key findings.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Extracted text from the research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          AI model (Mistral-7B) analyzes the text and generates a concise summary.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          A structured summary of the paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 253
+      height: 156
+      id: '1741971698950'
+      position:
+        x: 2809
+        y: 53.38318473992095
+      positionAbsolute:
+        x: 2809
+        y: 53.38318473992095
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 253
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 205
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Fetch metadata related to the research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Query the Semantic Scholar API for metadata.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Extracted title of the research paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          The system sends an API request with the title and retrieves metadata.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Paper metadata including authors, abstract, publication year, etc.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 205
+      id: '1741971732655'
+      position:
+        x: 919.9988940933711
+        y: 555.3831847399207
+      positionAbsolute:
+        x: 919.9988940933711
+        y: 555.3831847399207
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 238
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Extract reference titles from the metadata.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Parse the metadata to retrieve titles of cited papers.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Metadata from Semantic Scholar API.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Extracts and structures reference titles from the JSON response.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          A list of reference paper titles.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 257
+      height: 238
+      id: '1741971752469'
+      position:
+        x: 1231.3559990026629
+        y: 541.9779309010707
+      positionAbsolute:
+        x: 1231.3559990026629
+        y: 541.9779309010707
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 257
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 214
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Process each referenced paper title in a loop.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Iterate over each reference title to fetch metadata.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          List of reference paper titles.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Loops through each title and queries the Semantic Scholar API.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Individual processing of each reference.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 407
+      height: 214
+      id: '1741971784659'
+      position:
+        x: 1975.673454712853
+        y: 642.9460927475143
+      positionAbsolute:
+        x: 1975.673454712853
+        y: 642.9460927475143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 407
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 182
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Fetch metadata for each referenced paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Query Semantic Scholar API for each reference title.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Individual reference paper title.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          API request retrieves metadata such as title, authors, and abstract.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Metadata for each reference paper.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 253
+      height: 182
+      id: '1741971802509'
+      position:
+        x: 1648.9664319556493
+        y: 654.5476599232784
+      positionAbsolute:
+        x: 1648.9664319556493
+        y: 654.5476599232784
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 253
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 167
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Convert metadata into a structured format for Neo4j.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Process metadata and prepare it for graph database insertion.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Metadata for all papers (main paper and references).","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Formats the metadata into a structured JSON suitable for Neo4j.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          JSON payload ready for Neo4j insertion.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 287
+      height: 167
+      id: '1741971818027'
+      position:
+        x: 2495.4274082970114
+        y: 500.77257222135506
+      positionAbsolute:
+        x: 2495.4274082970114
+        y: 500.77257222135506
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 287
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 165
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Describe the structure of the knowledge graph.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Analyze the Cypher query and explain the graph''s structure.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          The structured Cypher query.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Uses AI to describe how many nodes and relationships are created.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          A structured description of the knowledge graph.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 241
+      height: 165
+      id: '1741971830275'
+      position:
+        x: 2809
+        y: 505.2182655182853
+      positionAbsolute:
+        x: 2809
+        y: 505.2182655182853
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 241
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 193
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Goal","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Conclude the workflow and return results.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Task","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Collect and present the processed data.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Input","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Summary, references, and graph description.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Process","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Outputs all collected and processed information.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Result","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          Structured summary, reference list, and graph description.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 282
+      height: 193
+      id: '1741971844045'
+      position:
+        x: 3102.559219668238
+        y: 40.772572221355176
+      positionAbsolute:
+        x: 3102.559219668238
+        y: 40.772572221355176
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 282
+    - data:
+        author: 19203033bcse@gmail.com
+        desc: ''
+        height: 176
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Authors
+          → Papers Relationship","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Papers
+          → Venue Relationship","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Paper
+          → DOI Relationship","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Papers
+          → Fields of Study Relationship","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Citation
+          (Paper → Referenced Paper) Relationship","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":"ltr","format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 311
+      height: 176
+      id: '1741972156810'
+      position:
+        x: 2489.1323927278104
+        y: 695.1539332508152
+      positionAbsolute:
+        x: 2489.1323927278104
+        y: 695.1539332508152
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 311
+    viewport:
+      x: 176.2411011265924
+      y: 169.87055056329615
+      zoom: 0.3499999999999999
